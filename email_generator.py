@@ -2,11 +2,12 @@ import requests
 import json
 import time
 import sys
+import os # <-- Added for environment variable access
 
 # --- Configuration ---
-# NOTE: Replace with your actual Gemini/Groq API Key if you are running this locally.
-# Assuming the Chain class uses the same configuration found in chains.py
-GEMINI_API_KEY = ""
+# NOTE: The API key is now loaded from the environment variable GROQ_API_KEY.
+# Please ensure this environment variable is set before running the script.
+GROQ_API_KEY = os.getenv("GROQ_API_KEY") 
 MODEL_NAME = "llama-3.3-70b-versatile" # Aligning model name with chains.py
 API_URL = f"https://api.groq.com/openai/v1/chat/completions" # Using Groq API endpoint
 
@@ -23,6 +24,10 @@ def generate_application_email(job_description: str, resume_data: str) -> str:
         The generated email content (subject line + body) as a string, or None on failure.
     """
     
+    if not GROQ_API_KEY:
+        print("Error: GROQ_API_KEY environment variable not set.")
+        return None
+
     system_prompt = (
         "You are a skilled applicant, Abhinav Prasad, applying for the target job. Your task is to write a highly tailored, "
         "professional application email to the hiring manager. The output must start with the Subject line, followed by the email body.\n\n"
@@ -32,7 +37,7 @@ def generate_application_email(job_description: str, resume_data: str) -> str:
         "3. **Critically analyze** the job requirements and **directly correlate** Abhinav's skills, projects, and work experience from the resume to the job requirements. Mention specific projects or achievements where possible.\n"
         "4. Include a compelling subject line at the very top, clearly separated (e.g., 'Subject: Inquiry about X Role').\n"
         "5. The email should end with a professional closing and Abhinav Prasad's full contact block (Email, Phone, LinkedIn/GitHub/Portfolio links).\n"
-        "6. **MANDATORY CLOSING LINE:** You must include the following line immediately before the professional closing (e.g., 'Sincerely', 'Best regards'): 'I am available to join immediately, as I have completed all my academic coursework.'\n""
+        "6. **MANDATORY CLOSING LINE:** You must include the following line immediately before the professional closing (e.g., 'Sincerely', 'Best regards'): 'I am available to join immediately, as I have completed all my academic coursework.'\n"
         "7. Do not provide a preamble or post-amble, only the email content."
     )
 
@@ -63,7 +68,7 @@ def generate_application_email(job_description: str, resume_data: str) -> str:
                 API_URL, 
                 headers={
                     'Content-Type': 'application/json',
-                    'Authorization': f'Bearer {GEMINI_API_KEY}' # Using environment variable if set
+                    'Authorization': f'Bearer {GROQ_API_KEY}' # <-- Updated to use GROQ_API_KEY
                 }, 
                 data=json.dumps(payload)
             )
