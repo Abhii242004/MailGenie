@@ -13,53 +13,7 @@ from utils import clean_text
 
 # Define the user's resume content as the default for the input area
 DEFAULT_RESUME_TEXT = """
-ABHINAV PRASAD
-+91-8989625663 | abhinavprasad2004ap@gmail.com | LinkedIn | GitHub | Portfolio
-Education
-Vellore Institute of Technology
-B.Tech in Computer Science and Engineering Jul. 2022 – May 2026
-• CGPA: 8.88
-Atomic Energy Central School Indore, MP
-12th CBSE Board Jul. 2021
-• Percentage: 91.4%
-Atomic Energy Central School Indore, MP
-10th CBSE Board Jul. 2019
-• Percentage: 91.8%
-Work Experience
-Zyngate Remote
-Python and AI Intern Sept 2025 – Ongoing
-• Contributing to the development and beta testing of AI-powered features for Stelle AI, enhancing product reliability before public rollout.
-• Built the “Plan My Week” feature, enabling users to generate optimized weekly schedules.
-• Developed LinkedIn lead automation workflows that scrape, filter, and draft personalized outreach messages using Python and AI models.
-Raja Ramanna Centre for Advanced Technology(RRCAT) Indore, MP
-Machine Learning Intern Sept 2024 – Nov 2024
-• Designed and trained a Convolutional Neural Network to model beam dynamics with respect to steering magnet currents.
-• Developed an interactive GUI application to visualize beam position changes upon magnet activation.
-• Preprocessed beam data using 88x120 eye matrices as model input and output, ensuring clean and structured datasets.
-• Optimized model performance through normalization, data augmentation to improve accuracy.
-Projects
-Boston House Pricing Prediction
-Python, Flask, HTML, Scikit-learn, NumPy, Pandas
-Jul 2025 – Aug 2025
-• Implemented a Linear Regression model to predict Boston house prices based on key features such as crime rate, number of rooms, and property tax.
-• Deployed the trained model using Flask, providing both API and web-based access.
-• Designed a clean HTML interface where users can enter property details and instantly view predictions.
-NAI (News AI Tool)
-Python, Streamlit, OpenAI API, LangChain, FAISS, Selenium
-Oct 2025 – Nov 2025
-• Built an AI-powered web tool to fetch, process, and analyze news articles with interactive Streamlit frontend for user queries.
-• Implemented web scraping with Selenium, fallback HTTP fetching, text splitting, and FAISS-based vector embeddings for efficient retrieval.
-LinkedIn LLD
-C++, OOPs, File Handling
-Apr 2025 – May 2025
-• Created a console-based LinkedIn clone implementing profiles, connections, posts, and messaging.
-• Applied Object-Oriented Programming concepts including inheritance, polymorphism, and encapsulation.
-• Implemented persistent storage with file handling, enabling data to be saved and reloaded across sessions.
-Technical Skills
-C++, Python, OpenCV, NumPy, Pandas, HTML/CSS, MySQL, Java, Reactjs, Node.js, Next.js, Tailwind CSS, Flask, Express
-Achievements
-• Qualified Gate 2025
-• Achieved Competitive Programming ratings: CodeChef 1561, LeetCode 1581
+YOUR_RESUME_HERE
 """
 
 # --- Configuration for SMTP Server ---
@@ -290,4 +244,5 @@ if __name__ == "__main__":
     st.set_page_config(layout="wide", page_title="AI Email Automator", page_icon="📧")
     
     # Run the application, passing only the chain and the utility function
+
     create_streamlit_app(chain, clean_text)
